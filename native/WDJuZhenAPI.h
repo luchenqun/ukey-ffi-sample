@@ -3,12 +3,12 @@
 
 
 
-#define  WD_JUZHEN_ERROR  0             //å¤±è´¥
-#define  WD_JUZHEN_OK     1             //æˆåŠŸ
-#define  WD_JUZHEN_PARAM_ERROR -1       //è¾“å…¥å‚æ•°é”™è¯¯
-#define  WD_JUZHEN_MEMORY_ERROR  -2 //  //ä¼ å…¥BUFçš„ç©ºé—´ä¸è¶³
-#define  WD_JUZHEN_DEV_ERROR    -3      //æ‰“å¼€è®¾å¤‡å¤±è´¥
-#define  WD_JUZHEN_NOKEY       -4       //æ²¡æœ‰æŒ‡å®šçš„å¯†é’¥
+#define  WD_JUZHEN_ERROR  0             //Ê§°Ü
+#define  WD_JUZHEN_OK     1             //³É¹¦
+#define  WD_JUZHEN_PARAM_ERROR -1       //ÊäÈë²ÎÊý´íÎó
+#define  WD_JUZHEN_MEMORY_ERROR  -2 //  //´«ÈëBUFµÄ¿Õ¼ä²»×ã
+#define  WD_JUZHEN_DEV_ERROR    -3      //´ò¿ªÉè±¸Ê§°Ü
+#define  WD_JUZHEN_NOKEY       -4       //Ã»ÓÐÖ¸¶¨µÄÃÜÔ¿
 
 
 #ifdef _cplusplus
@@ -16,397 +16,413 @@ extern "C"
 {
 #endif
 /*******************************************
-J_WD_OpenDevice
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Ž:
-    åˆ›å»ºUSBKEYè®¾å¤‡ä¸Šä¸‹æ–‡å¹¶æ‰“å¼€USBKEYè®¾å¤‡ã€‚
-è¿”å›žå€¼ï¼š
-    0: å¤±è´¥  1: æ‰“å¼€è®¾å¤‡æˆåŠŸã€‚
+J_WD_OpenDevice 
+º¯Êý¹¦ÄÜ¼°ËµÃ÷:
+    ´´½¨USBKEYÉè±¸ÉÏÏÂÎÄ²¢´ò¿ªUSBKEYÉè±¸¡£
+·µ»ØÖµ£º
+    0: Ê§°Ü  1: ´ò¿ªÉè±¸³É¹¦¡£
 ********************************************/
-
-LONG32 WINAPI J_BC_WD_OpenDevice ();  // 01
+// 01
+LONG32 WINAPI J_BC_WD_OpenDevice ();
 
 
 /*******************************************
 J_WD_CloseDevice
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Ž:
-    å…³é—­USBKEYè®¾å¤‡ï¼Œå¹¶é‡Šæ”¾è®¾å¤‡ä¸Šä¸‹æ–‡ã€‚
-è¿”å›žå€¼ï¼š
-    0: å¤±è´¥  1: å…³é—­è®¾å¤‡æˆåŠŸã€‚
+º¯Êý¹¦ÄÜ¼°ËµÃ÷:
+    ¹Ø±ÕUSBKEYÉè±¸£¬²¢ÊÍ·ÅÉè±¸ÉÏÏÂÎÄ¡£
+·µ»ØÖµ£º
+    0: Ê§°Ü  1: ¹Ø±ÕÉè±¸³É¹¦¡£
 ********************************************/
-
-LONG32 WINAPI J_BC_WD_CloseDevice();  // 02
+// 02
+LONG32 WINAPI J_BC_WD_CloseDevice();
 
 
 /*******************************************
 J_BC_WD_VerifyPin
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    éªŒè¯ç”¨æˆ·å£ä»¤ã€‚
-å‚æ•°ï¼š
-    pbUserPin: ç”¨æˆ·PINã€‚
-    dwUserPinLenï¼šç”¨æˆ·PINé•¿åº¦ã€‚
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÑéÖ¤ÓÃ»§¿ÚÁî¡£
+²ÎÊý£º
+    pbUserPin: ÓÃ»§PIN¡£
+    dwUserPinLen£ºÓÃ»§PIN³¤¶È¡£
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_VerifyPin (IN BYTE *pbUserPin,IN DWORD dwUserPinLen);  // 03
+// 03
+LONG32 WINAPI J_BC_WD_VerifyPin (IN BYTE *pbUserPin,IN DWORD dwUserPinLen);
 
 
 /*******************************************
 J_BC_WD_RSAGenKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    åœ¨USBKEYä¸­ç”ŸæˆæŒ‡å®šç±»åž‹çš„å¯†é’¥å¯¹ã€‚
-å‚æ•°ï¼š
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÔÚUSBKEYÖÐÉú³ÉÖ¸¶¨ÀàÐÍµÄÃÜÔ¿¶Ô¡£
+²ÎÊý£º
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
 
-
-LONG32 WINAPI J_BC_WD_RSAGenKey ();  // 04
+// 04
+LONG32 WINAPI J_BC_WD_RSAGenKey ();
 
 
 /*******************************************
 J_BC_WD_ECCGenKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    åœ¨USBKEYä¸­ç”ŸæˆæŒ‡å®šç±»åž‹çš„å¯†é’¥å¯¹ã€‚
-å‚æ•°ï¼š
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÔÚUSBKEYÖÐÉú³ÉÖ¸¶¨ÀàÐÍµÄÃÜÔ¿¶Ô¡£
+²ÎÊý£º
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
 
+// 05
+LONG32 WINAPI J_BC_WD_ECCGenKey();
 
-LONG32 WINAPI J_BC_WD_ECCGenKey();  // 05
-
-
+ 
 /*******************************************
 J_BC_WD_RSAGetPubKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å‡ºæŒ‡å®šå¯†é’¥ç±»åž‹çš„å…¬é’¥ã€‚
-å‚æ•°ï¼š
-
-	pbPubKeyï¼šç”Ÿæˆçš„ç”¨æˆ·å…¬é’¥ã€‚      RSA2048ï¼šN|E
-	pdwPubKeyLenï¼šç”¨æˆ·å…¬é’¥çš„é•¿åº¦ã€‚  RSA2048ï¼š256+3ï¼›ECDSAï¼š64
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼³öÖ¸¶¨ÃÜÔ¿ÀàÐÍµÄ¹«Ô¿¡£
+²ÎÊý£º
+  
+	pbPubKey£ºÉú³ÉµÄÓÃ»§¹«Ô¿¡£      RSA2048£ºN|E    
+	pdwPubKeyLen£ºÓÃ»§¹«Ô¿µÄ³¤¶È¡£  RSA2048£º256+3£»ECDSA£º64
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_RSAGetPubKey ( OUT BYTE *pbPubKey, OUT DWORD *pdwPubKeyLen);  // 06
+// 06
+LONG32 WINAPI J_BC_WD_RSAGetPubKey ( OUT BYTE *pbPubKey, OUT DWORD *pdwPubKeyLen);
 
 
 /*******************************************
 J_BC_WD_ECCGetPubKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å‡ºæŒ‡å®šå¯†é’¥ç±»åž‹çš„å…¬é’¥ã€‚
-å‚æ•°ï¼š
-
-	pbPubKeyï¼šç”Ÿæˆçš„ç”¨æˆ·å…¬é’¥ã€‚      RSA2048ï¼šN|E
-	pdwPubKeyLenï¼šç”¨æˆ·å…¬é’¥çš„é•¿åº¦ã€‚  RSA2048ï¼š256+3ï¼›ECDSAï¼š64
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼³öÖ¸¶¨ÃÜÔ¿ÀàÐÍµÄ¹«Ô¿¡£
+²ÎÊý£º
+  
+	pbPubKey£ºÉú³ÉµÄÓÃ»§¹«Ô¿¡£      RSA2048£ºN|E    
+	pdwPubKeyLen£ºÓÃ»§¹«Ô¿µÄ³¤¶È¡£  RSA2048£º256+3£»ECDSA£º64
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_ECCGetPubKey (OUT BYTE *pbPubKey, OUT DWORD *pdwPubKeyLen);  // 07
+// 07
+LONG32 WINAPI J_BC_WD_ECCGetPubKey (OUT BYTE *pbPubKey, OUT DWORD *pdwPubKeyLen);
 
 
 /*******************************************
 J_BC_WD_ImportRSACert
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å…¥RSA2048è¯ä¹¦åˆ°USBKEYä¸­ã€‚è¯ä¹¦ç¼–ç æ ¼å¼ä¸ºPEMæˆ–è€…DERã€‚
-å‚æ•°ï¼š
-    pbCert:è¯ä¹¦æ•°æ®
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼ÈëRSA2048Ö¤Êéµ½USBKEYÖÐ¡£Ö¤Êé±àÂë¸ñÊ½ÎªPEM»òÕßDER¡£
+²ÎÊý£º
+    pbCert:Ö¤ÊéÊý¾Ý
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_ImportRSACert( IN BYTE *pbCert);  // 08
+// 08
+LONG32 WINAPI J_BC_WD_ImportRSACert( IN BYTE *pbCert);
 
 
 /*******************************************
 J_BC_WD_ExPortRSACert
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å‡ºRSA2048è¯ä¹¦ã€‚è¯ä¹¦ç¼–ç æ ¼å¼ä¸ºPEMã€‚
-å‚æ•°ï¼š
-    pbCert:è¯ä¹¦æ•°æ®
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼³öRSA2048Ö¤Êé¡£Ö¤Êé±àÂë¸ñÊ½ÎªPEM¡£
+²ÎÊý£º
+    pbCert:Ö¤ÊéÊý¾Ý
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_ExPortRSACert( OUT BYTE *pbCert,OUT DWORD *pdwCertLen);  // 09
+// 09
+LONG32 WINAPI J_BC_WD_ExPortRSACert( OUT BYTE *pbCert,OUT DWORD *pdwCertLen);
 
 
 /*******************************************
 J_BC_WD_RSAEncrypt
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    RSAåŠ å¯†ã€‚
-å‚æ•°ï¼š
-
-   pbDataï¼šæ˜Žæ–‡æ•°æ®
-   dwDataLenï¼šæ˜Žæ–‡é•¿åº¦
-   pbCipherï¼šå¯†æ–‡
-   pdwCipherLenï¼šå¯†æ–‡æ•°æ®é•¿åº¦
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    RSA¼ÓÃÜ¡£
+²ÎÊý£º
+   
+   pbData£ºÃ÷ÎÄÊý¾Ý
+   dwDataLen£ºÃ÷ÎÄ³¤¶È
+   pbCipher£ºÃÜÎÄ
+   pdwCipherLen£ºÃÜÎÄÊý¾Ý³¤¶È  
+ 
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
+// 10
 LONG32 WINAPI J_BC_WD_RSAEncrypt(
 								 IN BYTE *pbData,
-								 IN DWORD dwDataLen,
+								 IN DWORD dwDataLen, 
 								 OUT BYTE*pbCipher,
-								 OUT DWORD* pdwCipherLen);  // 10
+								 OUT DWORD* pdwCipherLen);
 
 
 
 /*******************************************
 J_BC_WD_RSASign
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    æ”¯æŒRSA2048å¯†é’¥å¯¹ç­¾åã€‚
-å‚æ•°ï¼š
-	dwHashAlg:Hashç®—æ³•ï¼ŒMD5:1,SHA1:2,SHA256:3,SHA3:4
-	pbData: å¾…ç­¾åæ¶ˆæ¯æ•°æ®ã€‚
-	dwDataLenï¼šå¾…ç­¾åæ¶ˆæ¯æ•°æ®é•¿åº¦ã€‚
-	pbSignï¼šç­¾åå€¼ã€‚
-	pdwSignLenï¼šç­¾åå€¼é•¿åº¦ã€‚
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    Ö§³ÖRSA2048ÃÜÔ¿¶ÔÇ©Ãû¡£
+²ÎÊý£º
+	dwHashAlg:HashËã·¨£¬MD5:1,SHA1:2,SHA256:3,SHA3:4
+	pbData: ´ýÇ©ÃûÏûÏ¢Êý¾Ý¡£
+	dwDataLen£º´ýÇ©ÃûÏûÏ¢Êý¾Ý³¤¶È¡£
+	pbSign£ºÇ©ÃûÖµ¡£
+	pdwSignLen£ºÇ©ÃûÖµ³¤¶È¡£
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
 
-
+// 11
 LONG32 WINAPI J_BC_WD_RSASign (
 								IN DWORD     dwHashAlg,
 								IN BYTE*       pbData,
 								IN DWORD     dwDataLen,
 								OUT BYTE*     pbSign,
 								OUT DWORD*   pdwSignLen
-							  );  // 11
+							  );
 
 /*******************************************
 J_BC_WD_ECCSign
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    æ”¯æŒECDSAç­¾åã€‚
-	ä»¥å¤ªåŠä¸­ECDSAç­¾åè¾“å…¥çš„æ ¼å¼å¦‚ä¸‹ï¼š
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    Ö§³ÖECDSAÇ©Ãû¡£
+	ÒÔÌ«·»ÖÐECDSAÇ©ÃûÊäÈëµÄ¸ñÊ½ÈçÏÂ£º
 	0xf7+BytesNum||len||m
-	å…¶ä¸­len = length(m)è¡¨ç¤ºmçš„å­—èŠ‚æ•°ï¼ˆå­—èŠ‚æ•°>55ï¼‰ã€‚BytesNumä¸ºè¡¨ç¤ºlenéœ€è¦çš„å­—èŠ‚æ•°ã€‚
-
-
-	ä»¥å¤ªåŠECDSAç­¾åè¾“å‡ºæ ¼å¼å¦‚ä¸‹ï¼š
-	ç­¾åå¾—åˆ°(v, r, s)ï¼Œè¾“å‡ºï¼š
+	ÆäÖÐlen = length(m)±íÊ¾mµÄ×Ö½ÚÊý£¨×Ö½ÚÊý>55£©¡£BytesNumÎª±íÊ¾lenÐèÒªµÄ×Ö½ÚÊý¡£
+	
+	  
+	ÒÔÌ«·»ECDSAÇ©ÃûÊä³ö¸ñÊ½ÈçÏÂ£º
+	Ç©ÃûµÃµ½(v, r, s)£¬Êä³ö£º
 	0xf7+BytesNum2||len+67||m||v||a0||r||a0||s
-	å…¶ä¸­BytesNum2ä¸ºè¡¨ç¤ºlen+67éœ€è¦çš„å­—èŠ‚æ•°ã€‚67ä¸ºï¼ˆv||a0||r||a0||sï¼‰çš„å­—èŠ‚é•¿åº¦ã€‚
+	ÆäÖÐBytesNum2Îª±íÊ¾len+67ÐèÒªµÄ×Ö½ÚÊý¡£67Îª£¨v||a0||r||a0||s£©µÄ×Ö½Ú³¤¶È¡£
 
-å‚æ•°ï¼š
+²ÎÊý£º
+   
+	pbMsgRlp: ´ýÇ©ÃûÏûÏ¢Êý¾Ý¡£
+	dwMsgRlpLen:ÏûÏ¢³¤¶È
+	pbSignRlp£ºÇ©ÃûÖµ¡£
+	pdwSignLen£ºÇ©ÃûÖµ³¤¶È¡£
 
-	pbMsgRlp: å¾…ç­¾åæ¶ˆæ¯æ•°æ®ã€‚
-	dwMsgRlpLen:æ¶ˆæ¯é•¿åº¦
-	pbSignRlpï¼šç­¾åå€¼ã€‚
-	pdwSignLenï¼šç­¾åå€¼é•¿åº¦ã€‚
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
 
-
+// 12
 LONG32 WINAPI J_BC_WD_ECCSign (
 							IN BYTE*     pbMsgRlp,
 							IN DWORD     dwMsgRlpLen,
 							OUT BYTE*    pbSignRlp,
 							OUT DWORD*   pdwSignLen
-			              );  // 12
+			              );
 
 
 
 
 /*******************************************
 J_BC_WD_RSAVerifySign
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    æ”¯æŒRSA2048å¯†é’¥å¯¹éªŒç­¾ã€‚
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    Ö§³ÖRSA2048ÃÜÔ¿¶ÔÑéÇ©¡£
+	
+²ÎÊý£º
+   
+	dwHashAlg:HashËã·¨£¬MD5:1,SHA1:2,SHA256:3,SHA3:4
+	pbData: ´ýÇ©ÃûÏûÏ¢Êý¾Ý¡£
+	dwDataLen£º´ýÇ©ÃûÏûÏ¢Êý¾Ý³¤¶È¡£
+	pbSign£ºÇ©ÃûÖµ¡£
+	pdwSignLen£ºÇ©ÃûÖµ³¤¶È¡£
 
-å‚æ•°ï¼š
-
-	dwHashAlg:Hashç®—æ³•ï¼ŒMD5:1,SHA1:2,SHA256:3,SHA3:4
-	pbData: å¾…ç­¾åæ¶ˆæ¯æ•°æ®ã€‚
-	dwDataLenï¼šå¾…ç­¾åæ¶ˆæ¯æ•°æ®é•¿åº¦ã€‚
-	pbSignï¼šç­¾åå€¼ã€‚
-	pdwSignLenï¼šç­¾åå€¼é•¿åº¦ã€‚
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 
 ********************************************/
+// 13
 LONG32 WINAPI J_BC_WD_RSAVerifySign(
 								 IN DWORD dwHashAlg,
-								 IN  BYTE* pbData,
+								 IN  BYTE* pbData, 
 								 IN DWORD dwDataLen,
-								 IN BYTE* pbSign);  // 13
+								 IN BYTE* pbSign);
 
 
 /*******************************************
 J_BC_WD_ECCVerifySign
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-  æ”¯æŒECCéªŒç­¾ã€‚
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+  Ö§³ÖECCÑéÇ©¡£
 
-  ä»¥å¤ªåŠECDSAç­¾åè¾“å‡ºæ ¼å¼å¦‚ä¸‹ï¼š
-  ç­¾åå¾—åˆ°(v, r, s)ï¼Œè¾“å‡ºï¼š
+  ÒÔÌ«·»ECDSAÇ©ÃûÊä³ö¸ñÊ½ÈçÏÂ£º
+  Ç©ÃûµÃµ½(v, r, s)£¬Êä³ö£º
   0xf7+BytesNum2||len+67||m||v||a0||r||a0||s
-  å…¶ä¸­BytesNum2ä¸ºè¡¨ç¤ºlen+67éœ€è¦çš„å­—èŠ‚æ•°ã€‚67ä¸ºï¼ˆv||a0||r||a0||sï¼‰çš„å­—èŠ‚é•¿åº¦ã€‚
+  ÆäÖÐBytesNum2Îª±íÊ¾len+67ÐèÒªµÄ×Ö½ÚÊý¡£67Îª£¨v||a0||r||a0||s£©µÄ×Ö½Ú³¤¶È¡£
 
-å‚æ•°ï¼š
+²ÎÊý£º
+  
+	pbSignRlp:Ç©ÃûÖµ
 
-	pbSignRlp:ç­¾åå€¼
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_WD_ECCVerifySign(IN BYTE* pbSignRlp);  // 14
+// 14
+LONG32 WINAPI J_BC_WD_ECCVerifySign(IN BYTE* pbSignRlp);
 
 
 
 /*******************************************
 J_BC_BE_Enc
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-   æ ¹æ®å¹¿æ’­åŠ å¯†ç®—æ³•æœºåˆ¶å¯¹æ•°æ®è¿›è¡ŒåŠ å¯†ã€‚
-å‚æ•°ï¼š
-   pbMessageï¼š [in]å¾…åŠ å¯†çš„æ˜Žæ–‡æ•°æ®
-   nMessage_Len: [in]æ˜Žæ–‡æ•°æ®çš„å­—èŠ‚é•¿åº¦
-   nGroupNum: [in]ç¾¤æˆå‘˜ä¸ªæ•°ï¼ˆå°äºŽ100ï¼‰
-   pbGroup_PubKey [in]ç¾¤æˆå‘˜å…¬é’¥ï¼ˆé•¿åº¦nGroupNum*Point_Lenï¼‰
-   pbCipherText = C1||C2||C3||C4ï¼Œ[out], å…¶ä¸­çš„å‚æ•°è§£é‡Šå¦‚ä¸‹ï¼š
-      C1: [out]å¯†æ–‡æ•°æ®ï¼ˆé•¿åº¦ï¼š64ï¼‰
-      C2: [out]å¯†æ–‡æ•°æ®ï¼ˆé•¿åº¦ï¼š32ï¼‰
-      C3: [out]å¯†æ–‡æ•°æ®ï¼Œï¼ˆé•¿åº¦ï¼šnGroupNum*(64)ï¼‰
-      C4: [out]å¯†æ–‡æ•°æ®ï¼ˆAES å¯†æ–‡ï¼‰
-   pnCipherText_Len: [out]å¯†æ–‡é•¿åº¦
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+   ¸ù¾Ý¹ã²¥¼ÓÃÜËã·¨»úÖÆ¶ÔÊý¾Ý½øÐÐ¼ÓÃÜ¡£
+²ÎÊý£º
+   pbMessage£º [in]´ý¼ÓÃÜµÄÃ÷ÎÄÊý¾Ý
+   nMessage_Len: [in]Ã÷ÎÄÊý¾ÝµÄ×Ö½Ú³¤¶È
+   nGroupNum: [in]Èº³ÉÔ±¸öÊý£¨Ð¡ÓÚ100£©
+   pbGroup_PubKey [in]Èº³ÉÔ±¹«Ô¿£¨³¤¶ÈnGroupNum*Point_Len£©
+   pbCipherText = C1||C2||C3||C4£¬[out], ÆäÖÐµÄ²ÎÊý½âÊÍÈçÏÂ£º
+      C1: [out]ÃÜÎÄÊý¾Ý£¨³¤¶È£º64£©
+      C2: [out]ÃÜÎÄÊý¾Ý£¨³¤¶È£º32£©
+      C3: [out]ÃÜÎÄÊý¾Ý£¬£¨³¤¶È£ºnGroupNum*(64)£©
+      C4: [out]ÃÜÎÄÊý¾Ý£¨AES ÃÜÎÄ£©
+   pnCipherText_Len: [out]ÃÜÎÄ³¤¶È
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_BE_Enc(
+// 15
+LONG32 WINAPI J_BC_BE_Enc(  
 						   IN BYTE*   pbMessage,
 						   IN DWORD   dwMessage_Len,
 						   IN DWORD   dwGroupNum,
 						   IN BYTE*   pbGroup_PubKey,
 						   OUT BYTE*  pbCipherText,
 						   OUT DWORD  *pdwCipherText_Len
-						);  // 15
+						);
 
 
 /*******************************************
 J_BC_BE_Dec
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    ECCå¹¿æ’­è§£å¯†ã€‚
-å‚æ•°ï¼š
-    pbCipherText: [in]å¯†æ–‡æ•°æ®
-    nCipherText_Len: [in]å¯†æ–‡é•¿åº¦
-    nGroupNum: [in]ç¾¤æˆå‘˜ä¸ªæ•°ï¼ˆå°äºŽ100ï¼‰
-	pbMessage: [out]è§£å¯†çš„æ˜Žæ–‡æ•°æ®
-    pnMessage_Len: [out]æ˜Žæ–‡æ•°æ®çš„å­—èŠ‚é•¿åº¦
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ECC¹ã²¥½âÃÜ¡£
+²ÎÊý£º
+    pbCipherText: [in]ÃÜÎÄÊý¾Ý
+    nCipherText_Len: [in]ÃÜÎÄ³¤¶È
+    nGroupNum: [in]Èº³ÉÔ±¸öÊý£¨Ð¡ÓÚ100£©
+	pbMessage: [out]½âÃÜµÄÃ÷ÎÄÊý¾Ý
+    pnMessage_Len: [out]Ã÷ÎÄÊý¾ÝµÄ×Ö½Ú³¤¶È
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
+// 16
 LONG32 WINAPI J_BC_BE_Dec(
 			              IN  BYTE*   pbCipherText,
 			              IN  DWORD   dwCipherText_Len,
 			              IN  DWORD   dwGroupNum,
 			              OUT BYTE*   pbMessage,
 			              OUT DWORD*  pdwMessage_Len
-			            );  // 16
+			            );
 
 
 /*******************************************
 J_BC_GS_CheckKeyPair
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    åˆ¤æ–­ç”¨æˆ·ç§é’¥å’Œç³»ç»Ÿå…¬é’¥æ˜¯å¦å·²å¯¼å…¥ã€‚
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÅÐ¶ÏÓÃ»§Ë½Ô¿ºÍÏµÍ³¹«Ô¿ÊÇ·ñÒÑµ¼Èë¡£
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ   -4ï¼šæœªå¯¼å…¥
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦   -4£ºÎ´µ¼Èë
 ********************************************/
-LONG32 WINAPI J_BC_GS_CheckKeyPair();  // 17
+// 17
+LONG32 WINAPI J_BC_GS_CheckKeyPair();
 
 
 /*******************************************
 J_BC_GS_ImportMPubKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å…¥ç¾¤ç­¾åç³»ç»Ÿå…¬é’¥ã€‚
-å‚æ•°ï¼š
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼ÈëÈºÇ©ÃûÏµÍ³¹«Ô¿¡£
+²ÎÊý£º
+    
+    pbMPubKey: [in]ÈºÇ©ÃûÏµÍ³¹«Ô¿
+    dwMPubKey: [in]ÏµÍ³¹«Ô¿³¤¶È
 
-    pbMPubKey: [in]ç¾¤ç­¾åç³»ç»Ÿå…¬é’¥
-    dwMPubKey: [in]ç³»ç»Ÿå…¬é’¥é•¿åº¦
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_GS_ImportMPubKey(IN BYTE* pbMPubKey,IN DWORD dwMPubKey);  // 18
+// 18
+LONG32 WINAPI J_BC_GS_ImportMPubKey(IN BYTE* pbMPubKey,IN DWORD dwMPubKey);
 
 
 
 /*******************************************
 J_BC_GS_ImportUPriKey
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    å¯¼å…¥ç¾¤ç­¾åç”¨æˆ·ç§é’¥ã€‚
-å‚æ•°ï¼š
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    µ¼ÈëÈºÇ©ÃûÓÃ»§Ë½Ô¿¡£
+²ÎÊý£º
+  
+    pbUPriKey: [in]ÈºÇ©ÃûÓÃ»§Ë½Ô¿
+    dwUPriKey: [in]ÓÃ»§Ë½Ô¿³¤¶È
 
-    pbUPriKey: [in]ç¾¤ç­¾åç”¨æˆ·ç§é’¥
-    dwUPriKey: [in]ç”¨æˆ·ç§é’¥é•¿åº¦
-
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
-LONG32 WINAPI J_BC_GS_ImportUPriKey(IN BYTE  *pbUPriKey,IN DWORD dwUPriKey);  // 19
+// 19
+LONG32 WINAPI J_BC_GS_ImportUPriKey(IN BYTE  *pbUPriKey,IN DWORD dwUPriKey);
 
 
 
 /*******************************************
 J_BC_GS_Sign
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    ç¾¤ç­¾åã€‚
-å‚æ•°ï¼š
-    pbHash:[in]ç­¾åæ¶ˆæ¯çš„æ‘˜è¦
-    dwHash:[in]æ‘˜è¦é•¿åº¦
-    pbSign:[out]ç­¾åå€¼
-	pdwSignLen:[out]ç­¾åå€¼é•¿åº¦
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÈºÇ©Ãû¡£
+²ÎÊý£º
+    pbHash:[in]Ç©ÃûÏûÏ¢µÄÕªÒª
+    dwHash:[in]ÕªÒª³¤¶È
+    pbSign:[out]Ç©ÃûÖµ 
+	pdwSignLen:[out]Ç©ÃûÖµ³¤¶È
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
+// 20
 LONG32 WINAPI J_BC_GS_Sign(IN BYTE*   pbHash,
 						   IN DWORD   dwHash,
 						   OUT BYTE*  pbSign,
-						   OUT DWORD* pdwSignLen
-					      );  // 20
+						   OUT DWORD* pdwSignLen 
+					      );
 
 
 /*******************************************
 J_BC_GS_Verify
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    ç¾¤ç­¾åã€‚
-å‚æ•°ï¼š
-    pbHash:[in]ç­¾åæ¶ˆæ¯çš„æ‘˜è¦
-    dwHash:[in]æ‘˜è¦é•¿åº¦
-    pbSign:[in]ç­¾åå€¼
-	pdwSignLen:[in]ç­¾åå€¼é•¿åº¦
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÈºÇ©Ãû¡£
+²ÎÊý£º
+    pbHash:[in]Ç©ÃûÏûÏ¢µÄÕªÒª
+    dwHash:[in]ÕªÒª³¤¶È
+    pbSign:[in]Ç©ÃûÖµ 
+	pdwSignLen:[in]Ç©ÃûÖµ³¤¶È
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
+// 21
 LONG32 WINAPI J_BC_GS_Verify(IN BYTE*   pbHash,
 							 IN DWORD   dwHash,
 							 IN BYTE*   pbSign,
-					         IN DWORD   dwSignLen);  // 21
+					         IN DWORD   dwSignLen);
 
 
 
 /*******************************************
 J_BC_WD_TradeSignProtect
-å‡½æ•°åŠŸèƒ½åŠè¯´æ˜Žï¼š
-    äº¤æ˜“éšç§ä¿æŠ¤æŽ¥å£ï¼šå³ä»¥äº¤æ˜“ä¸ºè¾“å…¥ï¼Œå…ˆå¯¹äº¤æ˜“è¿›è¡ŒECDSAç­¾åï¼Œå†å¯¹æ•´ä¸ªæ•°æ®å’Œç­¾åè¿›è¡Œå¹¿æ’­åŠ å¯†ï¼Œæœ€åŽå¯¹æ•´ä¸ªå¯†æ–‡è¿›è¡Œç¾¤ç­¾åä½œä¸ºè¾“å‡ºã€‚
-å‚æ•°ï¼š
-    dwKeyUsageï¼šç”Ÿæˆçš„ECCKeyçš„å¯†é’¥ç”¨é€” 1:AT_KEYEXCHANGEï¼Œ2ï¼šAT_SIGNATURE
-    pbMsg:[in]å¾…ç­¾åçš„äº¤æ˜“æ•°æ®åŽŸæ–‡
-    dwMsg:[in]äº¤æ˜“æ•°æ®é•¿åº¦
-	nGroupNum: [in]ç¾¤æˆå‘˜ä¸ªæ•°ï¼ˆå°äºŽ100ï¼‰
-    pbGroup_PubKey [in]ç¾¤æˆå‘˜å…¬é’¥ï¼ˆé•¿åº¦nGroupNum*Point_Lenï¼‰
-    pbSign:[in]ç­¾åå€¼
-	pdwSignLen:[in]ç­¾åå€¼é•¿åº¦
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ½»Ò×ÒþË½±£»¤½Ó¿Ú£º¼´ÒÔ½»Ò×ÎªÊäÈë£¬ÏÈ¶Ô½»Ò×½øÐÐECDSAÇ©Ãû£¬ÔÙ¶ÔÕû¸öÊý¾ÝºÍÇ©Ãû½øÐÐ¹ã²¥¼ÓÃÜ£¬×îºó¶ÔÕû¸öÃÜÎÄ½øÐÐÈºÇ©Ãû×÷ÎªÊä³ö¡£
+²ÎÊý£º
+    dwKeyUsage£ºÉú³ÉµÄECCKeyµÄÃÜÔ¿ÓÃÍ¾ 1:AT_KEYEXCHANGE£¬2£ºAT_SIGNATURE
+    pbMsg:[in]´ýÇ©ÃûµÄ½»Ò×Êý¾ÝÔ­ÎÄ
+    dwMsg:[in]½»Ò×Êý¾Ý³¤¶È
+	nGroupNum: [in]Èº³ÉÔ±¸öÊý£¨Ð¡ÓÚ100£©
+    pbGroup_PubKey [in]Èº³ÉÔ±¹«Ô¿£¨³¤¶ÈnGroupNum*Point_Len£©
+    pbSign:[in]Ç©ÃûÖµ 
+	pdwSignLen:[in]Ç©ÃûÖµ³¤¶È
 
-è¿”å›žå€¼ï¼š
-	0: å¤±è´¥ 1:æˆåŠŸ
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
 ********************************************/
+// 22
 LONG32 WINAPI J_BC_WD_TradeSignProtect(
 									   IN  BYTE    *pbMsg,
                                        IN  DWORD   dwMsg,
@@ -414,32 +430,154 @@ LONG32 WINAPI J_BC_WD_TradeSignProtect(
 									   IN  BYTE    *pbGroup_PubKey,
                                        OUT BYTE    *pbSign,
                                        OUT DWORD   *pdwSignLen
-									   );  // 22
+									   );
+// 23
+LONG32 WINAPI WDScardEncrypt_ECIES(
+								   IN LPBYTE pbData,
+								   IN DWORD dwDataLen, 
+								   OUT LPBYTE pbEncryptedData,
+								   OUT LPDWORD pdwEncryptedDataLen
+								  );
+								  
+// 24
+LONG32 WINAPI WDScardDecrypt_ECIES(
+								   IN LPBYTE pbEncryptedData,
+								   IN DWORD dwEncryptedDataLen,
+								   OUT LPBYTE pbDecryptedData, 
+								   OUT PDWORD pdwDecryptedDataLen
+								  );
 
-//ECCåŠ å¯†
-WDScardEncrypt_ECIES(
-	IN LPBYTE pbData,
-	IN DWORD dwDataLen,
-	OUT LPBYTE pbEncryptedData,
-	OUT LPDWORD pdwEncryptedDataLen
-	)
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+								  
+/*******************************************
+WDScardGenKey_PAI
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ²úÉú¼Ó½âÃÜËùÐèµÄ¹«Ë½Ô¿¶Ô¡£
+²ÎÊý£º
+    dwKeyLen£º¹«Ë½Ô¿³¤¶È
+    pbPubKey_n:ÓÃ»§¹«Ô¿n
+    pbPubKey_g:ÓÃ»§¹«Ô¿g
+	pbPriKey_lambda: ÓÃ»§Ë½Ô¿lambda
+    pbPriKey_mu: ÓÃ»§Ë½Ô¿mu
 
-//ECCè§£å¯†
-WDScardDecrypt_ECIES(
-	IN LPBYTE pbEncryptedData,
-	IN DWORD dwEncryptedDataLen,
-	OUT LPBYTE pbDecryptedData,
-	OUT PDWORD pdwDecryptedDataLen
-	);
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
+********************************************/
 
-//ä»¥ä¸‹ä¸ºè°ƒè¯•æŽ¥å£ï¼ŒçŽ°ç‰ˆæœ¬dllå·²ç»å±è”½
-LONG32 WINAPI J_BC_WD_ECCImportKeyPair(BYTE *pbPriKey,DWORD dwPriKeyLen,BYTE *pbPubKey,DWORD dwPubKeyLen);
+LONG32 WINAPI WDScardGenKey_PAI(
+								IN DWORD   dwKeyLen,
+								OUT LPBYTE pbPubKey_n,
+								OUT LPBYTE pbPubKey_g, 
+								OUT LPBYTE pbPriKey_lambda,
+								OUT LPBYTE pbPriKey_mu
+							  );
 
-LONG32 WINAPI J_BC_WD_ECCGetPriKey (OUT BYTE *pbPriKey, OUT DWORD *pdwPriKeyLen);
-LONG32 WINAPI J_BC_WD_GetAESKey (OUT BYTE *pbAESKey, OUT DWORD *pdwAESKeyLen);
 
+/*******************************************
+WDScardEncryption_PAI
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÏûÏ¢¼ÓÃÜ¡£
+²ÎÊý£º
+    pbMsg£º´ý¼ÓÃÜµÄÏûÏ¢
+    dwMsgLen:ÏûÏ¢µÄ³¤¶È
+    pbPubKey_n:ÓÃ»§¹«Ô¿n
+	pbPubKey_g: ÓÃ»§¹«Ô¿g
+    dwKeyLen: ¹«Ë½Ô¿³¤¶È
+	pbRandom£ºËæ»úÊýr
+	dwRandomLen£ºËæ»úÊý³¤¶È
+	pbCipher£ºÉú³ÉµÄÃÜÎÄ
+	pdwCipherLenÉú³ÉµÄÃÜÎÄ³¤¶È
+
+
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
+********************************************/
+LONG32 WINAPI WDScardEncryption_PAI(
+									IN LPBYTE   pbMsg,
+									IN DWORD    dwMsgLen,
+									IN LPBYTE   pbPubKey_n,
+									IN LPBYTE   pbPubKey_g,
+									IN DWORD    dwKeyLen,
+									IN LPBYTE   pbRandom,
+									IN DWORD    dwRandomLen,
+									OUT LPBYTE  pbCipher,
+									OUT LPDWORD pdwCipherLen
+					                );
+
+/*******************************************
+WDScardDecryption_PAI
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ½âÃÜÃÜÎÄ£¬»ñµÃÃ÷ÎÄÏûÏ¢¡£
+²ÎÊý£º
+    pbCipher£ºÃÜÎÄÏûÏ¢
+    dwCipherLen:ÃÜÎÄÏûÏ¢µÄ³¤¶È
+    pbPubKey_n:ÓÃ»§¹«Ô¿n
+	pbPriKey_lambda£ºÓÃ»§Ë½Ô¿lambda
+	pbPriKey_mu£ºÓÃ»§Ë½Ô¿mu
+    dwKeyLen: ¹«Ë½Ô¿³¤¶È
+	pbMsg£º½âÃÜµÄÏûÏ¢
+	pdwMsgLen£º½âÃÜµÄÏûÏ¢³¤¶È
+	
+
+
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
+********************************************/
+LONG32 WINAPI WDScardDecryption_PAI(
+									IN LPBYTE   pbCipher,
+									IN DWORD    dwCipherLen,
+									IN LPBYTE   pbPubKey_n,
+									IN LPBYTE   pbPriKey_lambda,
+									IN LPBYTE   pbPriKey_mu,
+									IN DWORD    dwKeyLen,
+									OUT LPBYTE  pbMsg,
+									OUT LPDWORD pdwMsgLen
+					               );
+
+
+/*******************************************
+WDScardHomAdd_PAI
+º¯Êý¹¦ÄÜ¼°ËµÃ÷£º
+    ÃÜÎÄÍ¬Ì¬¼Ó¡£
+²ÎÊý£º
+    pbCipherA£ºÃÜÎÄÏûÏ¢A
+    dwCipherALen:ÃÜÎÄÏûÏ¢µÄ³¤¶È
+	pbCipherB£ºÃÜÎÄÏûÏ¢B
+	dwCipherBLen:ÃÜÎÄÏûÏ¢µÄ³¤¶È
+    pbPubKey_n:ÓÃ»§¹«Ô¿n
+    dwKeyLen: ¹«Ë½Ô¿³¤¶È
+	pbResult£º¼ÓÃÜºóµÄÏûÏ¢
+	pdwResultLen£º¼ÓÃÜºóµÄÏûÏ¢³¤¶È
+	
+
+
+·µ»ØÖµ£º
+	0: Ê§°Ü 1:³É¹¦
+********************************************/
+LONG32 WINAPI  WDScardHomAdd_PAI(
+								 IN LPBYTE   pbCipherA,
+								 IN DWORD    dwCipherALen,
+								 IN LPBYTE   pbCipherB,
+								 IN DWORD    dwCipherBLen,
+								 IN LPBYTE   pbPubKey_n,
+								 IN DWORD    dwKeyLen,
+								 OUT LPBYTE  pbResult,
+								 OUT LPDWORD pdwResultLen
+								);
 
 #ifdef _cplusplus
-}
+}	
 #endif
 #endif
